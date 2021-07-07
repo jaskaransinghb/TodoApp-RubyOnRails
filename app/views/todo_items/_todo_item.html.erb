@@ -23,9 +23,15 @@
    <p><%= todo_item.content %></p>
   </div>
   <div class="trash">
-  <%= link_to favourite_todo_list_todo_item_path(@todo_list, todo_item.id), method: :patch do %>
-    <i class="fa fa-star"></i>
-   <% end %>
+  <% if todo_item.favourite? %>
+    <%= link_to favourite_todo_list_todo_item_path(@todo_list, todo_item.id), method: :patch do %>
+        <i class="fa fa-star"></i>
+    <% end %>
+  <% else %>
+    <%= link_to favourite_todo_list_todo_item_path(@todo_list, todo_item.id), method: :patch do %>
+        <i class="fa fa-star-o"></i>
+    <% end %>
+  <% end %>
    &nbsp&nbsp
    <%= link_to todo_list_todo_item_path(@todo_list, todo_item.id), method: :delete, data: { confirm: "Are you sure?" } do %>
     <i class="fa fa-trash"></i>
