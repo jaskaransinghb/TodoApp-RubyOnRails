@@ -20,7 +20,17 @@ class TodoItemsController < ApplicationController
     def complete
         @todo_item.update_attribute(:completed_at, Time.now)
         redirect_to @todo_list, notice: "Todo item completed"
-        end    
+        end   
+        
+    def favourite
+        if @todo_item.favourite?
+            @todo_item.update_attribute(:favourite, false)
+            redirect_to @todo_list, notice: "Removed from favourites"
+        else
+            @todo_item.update_attribute(:favourite, true)
+            redirect_to @todo_list, notice: "Added to favourites"
+        end
+    end
 
     private
 

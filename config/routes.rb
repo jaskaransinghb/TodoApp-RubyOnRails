@@ -4,6 +4,9 @@ Rails.application.routes.draw do
       member do
         patch :complete
       end
+      member do
+        patch :favourite
+      end
     end
   end
   root "todo_lists#index"
